@@ -1,1 +1,1 @@
-//Your code here
+return new Cube(120,60,5).toCSG()
