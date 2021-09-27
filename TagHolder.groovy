@@ -2,11 +2,17 @@ import java.awt.Color
 
 import eu.mihosoft.vrl.v3d.*
 import eu.mihosoft.vrl.v3d.parametrics.*
-xkey 		= new LengthParameter("X dimention",120,[120.0,1.0])
-ykey 		= new LengthParameter("Y dimention",30,[130.0,2.0])
-zkey 		= new LengthParameter("Z dimention",2,[140.0,3.0])
-doveTailWidth = new LengthParameter("Dove Tail Width",5,[140.0,3.0])
-doveTailHeight = new LengthParameter("Dove Tail Height",5,[140.0,3.0])
+
+xkey 		= new LengthParameter("Length",120,[240.0,40.0])
+ykey 		= new LengthParameter("Width",30,[240.0,40.0])
+zkey 		= new LengthParameter("Height",2,[30.0,0.0])
+cutoutx 		= new LengthParameter("Cutout Length",45,[120.0,5.0])
+cutouty		= new LengthParameter("Cutout Width",13,[120.0,5.0])
+magnetDiameter = new LengthParameter("Magnet Diameter", 8.15, [20.0,0.0])
+magnetDepth 	= new LengthParameter("Magnet Depth",1.0,[5.0,0.0])
+doveTailWidth = new LengthParameter("Dove Tail Width",5,[80.0,5.0])
+doveTailHeight = new LengthParameter("Dove Tail Height",5,[80.0,5.0])
+
 CSG makeHolder(){
 	def cube = new Cube(xkey,ykey,zkey).toCSG()
 	def dovetail = makeDoveTail()
@@ -14,18 +20,28 @@ CSG makeHolder(){
 	cube = cube.difference(dovetail.movey(-ykey.getMM()/2).rotz(180))
 	cube = cube.difference(dovetail.movey(-xkey.getMM()/2).rotz(90))
 	cube = cube.difference(dovetail.movey(-xkey.getMM()/2).rotz(270))
-	def cutout = new Cube(45,13,zkey.getMM()).toCSG()
+	def magnet = makeMagnet().movez(zkey.getMM()/2-magnetDepth.getMM())
+	magnet = magnet.move(xkey.getMM()/2-3*magnetDiameter.getMM()/4,ykey.getMM()/2-3*magnetDiameter.getMM()/4,0);
+	magnet = magnet.union(magnet.mirrorx())
+	magnet = magnet.union(magnet.mirrory())
+	cube = cube.difference(magnet)
+	def cutout = new Cube(cutoutx.getMM(),cutouty.getMM(),zkey.getMM()).toCSG()
 	cube = cube.difference(cutout)
 	cube = cube.setName("Holder")
 	return cube
-		.setParameter(doveTailWidth)
-		.setParameter(doveTailHeight)
+		.setParameter(cutoutx)
+		.setParameter(cutouty)
+		.setParameter(magnetDiameter)
+		.setParameter(magnetDepth)
 		.setRegenerate({ makeHolder()})
 }
 
 CSG makeConnector(){
 	CSG dovetail = makeDoveTail()
 	return dovetail.union(dovetail.rotz(180))
+	.setParameter(doveTailWidth)
+		.setParameter(doveTailHeight)
+		.setRegenerate({makeConnector()})
 }
 
 CSG makeDoveTail() {
@@ -39,6 +55,10 @@ CSG makeDoveTail() {
         ).movez(-(zkey.getMM()/2));
 }
 	
+CSG makeMagnet(){
+	return new Cylinder(magnetDiameter.getMM()/2,magnetDepth.getMM()).toCSG()
+}
+
 CSG holder = makeHolder().setColor(javafx.scene.paint.Color.BLUE);
 CSG conn = makeConnector()
 			.setColor(javafx.scene.paint.Color.RED);
