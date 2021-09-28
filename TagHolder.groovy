@@ -12,6 +12,7 @@ magnetDiameter = new LengthParameter("Magnet Diameter", 8.15, [20.0,0.0])
 magnetDepth 	= new LengthParameter("Magnet Depth",1.0,[5.0,0.0])
 doveTailWidth = new LengthParameter("Dove Tail Width",5,[80.0,5.0])
 doveTailHeight = new LengthParameter("Dove Tail Height",5,[80.0,5.0])
+doveTailScale = new LengthParameter("Connector Scale",0.97,[1.0,0.0])
 
 CSG makeHolder(){
 	def cube = new Cube(xkey,ykey,zkey).toCSG()
@@ -39,8 +40,11 @@ CSG makeHolder(){
 CSG makeConnector(){
 	CSG dovetail = makeDoveTail()
 	return dovetail.union(dovetail.rotz(180))
+	.scalex(doveTailScale.getMM())
+	.scaley(doveTailScale.getMM())
 	.setParameter(doveTailWidth)
 		.setParameter(doveTailHeight)
+		.setParameter(doveTailScale)
 		.setRegenerate({makeConnector()})
 }
 
