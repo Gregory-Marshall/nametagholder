@@ -12,7 +12,7 @@ magnetDiameter = new LengthParameter("Magnet Diameter", 8.15, [20.0,0.0])
 magnetDepth 	= new LengthParameter("Magnet Depth",1.0,[5.0,0.0])
 doveTailWidth = new LengthParameter("Dove Tail Width",5,[80.0,5.0])
 doveTailHeight = new LengthParameter("Dove Tail Height",5,[80.0,5.0])
-doveTailOffSet = new LengthParameter("Connector Offset",0.25,[2.0,-1.0])
+doveTailScale = new LengthParameter("Connector Scale",0.97,[1.0,0.0])
 
 CSG makeHolder(){
 	def cube = new Cube(xkey,ykey,zkey).toCSG()
@@ -38,24 +38,24 @@ CSG makeHolder(){
 }
 
 CSG makeConnector(){
-	CSG dovetail = makeDoveTail(doveTailOffSet.getMM())
+	CSG dovetail = makeDoveTail()
 	return dovetail.union(dovetail.rotz(180))
-	//.scalex(doveTailScale.getMM())
-	//.scaley(doveTailScale.getMM())
+	.scalex(doveTailScale.getMM())
+	.scaley(doveTailScale.getMM())
 	.setParameter(doveTailWidth)
 		.setParameter(doveTailHeight)
-		.setParameter(doveTailOffSet)
+		.setParameter(doveTailScale)
 		.setRegenerate({makeConnector()})
 }
 
-CSG makeDoveTail(double offset = 0) {
-	def h = (doveTailHeight.getMM())/2-offset
-	def w = (doveTailWidth.getMM())/2
+CSG makeDoveTail() {
+	def h = doveTailHeight.getMM()/2
+	def w = doveTailWidth.getMM()/2
 	return Extrude.points(new Vector3d(0, 0, zkey.getMM()),
-                new Vector3d((-w/6)+offset,0),
-                new Vector3d((-w/2)+offset,h),
-                new Vector3d((w/2)-offset,h),
-                new Vector3d((w/6)-offset,0)
+                new Vector3d(-w/6,0),
+                new Vector3d(-w/2,h),
+                new Vector3d(w/2,h),
+                new Vector3d(w/6,0)
         ).movez(-(zkey.getMM()/2));
 }
 	
