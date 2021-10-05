@@ -31,11 +31,11 @@ CSG makeHolder(String name = ""){
 	def cutout = new Cube(cutoutx.getMM(),cutouty.getMM(),zkey.getMM()).toCSG()
 	cube = cube.difference(cutout)
 	cube = cube.roty(180)
-	Font font = new Font("Arial",  10);
+	Font font = new Font("Arial Bold",10);
 	def text = TextExtrude.text((double)2.0,name,font).collect{
 			it.rotx(180)
 			.movex(-xkey.getMM()/2+1)
-			.movey(ykey.getMM()/2-8)
+			.movey(ykey.getMM()/2-10)
 			.movez(1.0)
 			.toZMin()}
 	cube = cube.union(text)
