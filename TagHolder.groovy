@@ -3,6 +3,7 @@ import java.awt.Color
 import eu.mihosoft.vrl.v3d.*
 import eu.mihosoft.vrl.v3d.parametrics.*
 
+
 xkey 		= new LengthParameter("Length",120,[240.0,40.0])
 ykey 		= new LengthParameter("Width",30,[240.0,40.0])
 zkey 		= new LengthParameter("Height",2,[30.0,0.0])
@@ -14,7 +15,7 @@ doveTailWidth = new LengthParameter("Dove Tail Width",5,[80.0,5.0])
 doveTailHeight = new LengthParameter("Dove Tail Height",5,[80.0,5.0])
 doveTailScale = new LengthParameter("Connector Tolerance",0.2,[2.0,0.0])
 
-CSG makeHolder(){
+CSG makeHolder(String name = ""){
 	def cube = new Cube(xkey,ykey,zkey).toCSG()
 	def dovetail = makeDoveTail()
 	def o = doveTailScale.getMM()/2
@@ -29,7 +30,15 @@ CSG makeHolder(){
 	cube = cube.difference(magnet)
 	def cutout = new Cube(cutoutx.getMM(),cutouty.getMM(),zkey.getMM()).toCSG()
 	cube = cube.difference(cutout)
-	cube = cube.setName("Holder")
+	cube = cube.roty(180)
+	Font font = new Font("Arial",  10);
+	def text = TextExtrude.text((double)2.0,name,font).collect{
+			it.rotx(180)
+			.movex(-xkey.getMM()/2+1)
+			.movey(ykey.getMM()/2-8)
+			.movez(1.0)
+			.toZMin()}
+	cube = cube.union(text)
 	return cube
 		.setParameter(cutoutx)
 		.setParameter(cutouty)
@@ -67,14 +76,22 @@ CSG makeMagnet(){
 	return new Cylinder(magnetDiameter.getMM()/2,magnetDepth.getMM()).toCSG()
 }
 
-CSG holder = makeHolder().setColor(javafx.scene.paint.Color.BLUE);
+CSG holder = makeHolder().setColor(javafx.scene.paint.Color.BLUE).movey(-doveTailScale.getMM()/2).setName("Blank Holder");
+CSG holder1 = makeHolder("1001").setColor(javafx.scene.paint.Color.CYAN).movey(ykey.getMM()+doveTailScale.getMM()/2).setName("1001 Holder");
+CSG holder2 = makeHolder("200n").setColor(javafx.scene.paint.Color.GREEN).movex(-xkey.getMM()-doveTailScale.getMM()/2).setName("200n Holder");
+CSG holder3 = makeHolder("3001").setColor(javafx.scene.paint.Color.ORANGE).movey(-ykey.getMM()-doveTailScale.getMM()/2).setName("300n Holder");
+CSG holderl = makeHolder("LA").setColor(javafx.scene.paint.Color.PURPLE).movex(xkey.getMM()+doveTailScale.getMM()/2).setName("LA Holder");
 CSG conn = makeConnector()
 			.setColor(javafx.scene.paint.Color.RED);
 
-BowlerStudioController.addCsg(holder.movey(-doveTailScale.getMM()/2))
+BowlerStudioController.addCsg(holder)
+BowlerStudioController.addCsg(holder1)
+BowlerStudioController.addCsg(holder2)
+BowlerStudioController.addCsg(holder3)
+BowlerStudioController.addCsg(holderl)
 BowlerStudioController.addCsg(conn.movey(ykey.getMM()/2).setName("Connector"))
 BowlerStudioController.addCsg(conn.movey(xkey.getMM()/2).rotz(90))
 BowlerStudioController.addCsg(conn.movey(ykey.getMM()/2).rotz(180))
 BowlerStudioController.addCsg(conn.movey(xkey.getMM()/2).rotz(270))
-BowlerStudioController.addCsg(holder.movey(ykey.getMM()+ doveTailScale.getMM()/2).setColor(javafx.scene.paint.Color.CYAN))
+//BowlerStudioController.addCsg(holder.movey(ykey.getMM()+ doveTailScale.getMM()/2).setColor(javafx.scene.paint.Color.CYAN))
 return null
