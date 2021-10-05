@@ -79,7 +79,7 @@ CSG makeMagnet(){
 CSG holder = makeHolder().setColor(javafx.scene.paint.Color.BLUE).movey(-doveTailScale.getMM()/2).setName("Blank Holder");
 CSG holder1 = makeHolder("1001").setColor(javafx.scene.paint.Color.CYAN).movey(ykey.getMM()+doveTailScale.getMM()/2).setName("1001 Holder");
 CSG holder2 = makeHolder("200n").setColor(javafx.scene.paint.Color.GREEN).movex(-xkey.getMM()-doveTailScale.getMM()/2).setName("200n Holder");
-CSG holder3 = makeHolder("3001").setColor(javafx.scene.paint.Color.ORANGE).movey(-ykey.getMM()-doveTailScale.getMM()/2).setName("300n Holder");
+CSG holder3 = makeHolder("300n").setColor(javafx.scene.paint.Color.ORANGE).movey(-ykey.getMM()-doveTailScale.getMM()/2).setName("300n Holder");
 CSG holderl = makeHolder("LA").setColor(javafx.scene.paint.Color.PURPLE).movex(xkey.getMM()+doveTailScale.getMM()/2).setName("LA Holder");
 CSG conn = makeConnector()
 			.setColor(javafx.scene.paint.Color.RED);
