@@ -81,6 +81,8 @@ CSG holder1 = makeHolder("1001").setColor(javafx.scene.paint.Color.CYAN).movey(y
 CSG holder2 = makeHolder("200n").setColor(javafx.scene.paint.Color.GREEN).movex(-xkey.getMM()-doveTailScale.getMM()/2).setName("200n Holder");
 CSG holder3 = makeHolder("300n").setColor(javafx.scene.paint.Color.ORANGE).movey(-ykey.getMM()-doveTailScale.getMM()/2).setName("300n Holder");
 CSG holderl = makeHolder("LA").setColor(javafx.scene.paint.Color.PURPLE).movex(xkey.getMM()+doveTailScale.getMM()/2).setName("LA Holder");
+CSG holderp = makeHolder("Proffessor").setColor(javafx.scene.paint.Color.WHITE).movex(2*(xkey.getMM()+doveTailScale.getMM()/2)).setName("Proffessor Holder");
+
 CSG conn = makeConnector()
 			.setColor(javafx.scene.paint.Color.RED);
 
@@ -89,6 +91,8 @@ BowlerStudioController.addCsg(holder1)
 BowlerStudioController.addCsg(holder2)
 BowlerStudioController.addCsg(holder3)
 BowlerStudioController.addCsg(holderl)
+BowlerStudioController.addCsg(holderp)
+
 BowlerStudioController.addCsg(conn.movey(ykey.getMM()/2).setName("Connector"))
 BowlerStudioController.addCsg(conn.movey(xkey.getMM()/2).rotz(90).setManufacturing({ toMfg -> return null;}))
 BowlerStudioController.addCsg(conn.movey(ykey.getMM()/2).rotz(180).setManufacturing({ toMfg -> return null;}))
