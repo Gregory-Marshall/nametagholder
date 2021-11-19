@@ -1,0 +1,297 @@
+{
+  "Bolt Hole Facet Count": {
+    "name": "Bolt Hole Facet Count",
+    "options": [
+      "40",
+      "10"
+    ],
+    "value": 10000
+  },
+  "Camera Stand Height": {
+    "name": "Camera Stand Height",
+    "options": [
+      "445.618",
+      "45.618"
+    ],
+    "value": 247650
+  },
+  "Cable Cut Out Length": {
+    "name": "Cable Cut Out Length",
+    "options": [
+      "500",
+      "0.01"
+    ],
+    "value": 30000
+  },
+  "Cutout Length": {
+    "name": "Cutout Length",
+    "options": [
+      "120.0",
+      "5.0"
+    ],
+    "value": 50000
+  },
+  "Connector Offset": {
+    "name": "Connector Offset",
+    "options": [
+      "2.0",
+      "-1.0"
+    ],
+    "value": 250
+  },
+  "printerOffset": {
+    "name": "printerOffset",
+    "options": [
+      "1.2",
+      "0"
+    ],
+    "value": 600
+  },
+  "Y dimention": {
+    "name": "Y dimention",
+    "options": [
+      "130.0",
+      "2.0"
+    ],
+    "value": 40000
+  },
+  "Connector Scale": {
+    "name": "Connector Scale",
+    "options": [
+      "1.0",
+      "0.0"
+    ],
+    "value": 970
+  },
+  "Height": {
+    "name": "Height",
+    "options": [
+      "30.0",
+      "0.0"
+    ],
+    "value": 3000
+  },
+  "LewanSoulHorn Default": {
+    "name": "LewanSoulHorn Default",
+    "options": [
+      "round",
+      "round_m3_bolts"
+    ],
+    "strValue": "round_m3_bolts"
+  },
+  "Magnet Diameter": {
+    "name": "Magnet Diameter",
+    "options": [
+      "20.0",
+      "0.0"
+    ],
+    "value": 6150
+  },
+  "LewanSoulMotor Default": {
+    "name": "LewanSoulMotor Default",
+    "options": [
+      "lx_224"
+    ],
+    "strValue": "lx_224"
+  },
+  "Width": {
+    "name": "Width",
+    "options": [
+      "240.0",
+      "40.0"
+    ],
+    "value": 50000
+  },
+  "hobbyServo Default": {
+    "name": "hobbyServo Default",
+    "options": [
+      "DHV56mg_sub_Micro",
+      "hv5932mg",
+      "hv6214mg",
+      "mg92b",
+      "standard",
+      "standardMicro",
+      "towerProMG91",
+      "tproSG90",
+      "tproTG90"
+    ],
+    "strValue": "standardMicro"
+  },
+  "hobbyServoHorn Default": {
+    "name": "hobbyServoHorn Default",
+    "options": [
+      "DHV56mg_sub_Micro_1",
+      "DHV56mg_sub_Micro_2",
+      "DHV56mg_sub_Micro_4",
+      "hv6214mg_1",
+      "hv6214mg_6",
+      "standard4",
+      "standardMicro1",
+      "tproSG90_1"
+    ],
+    "strValue": "standardMicro1"
+  },
+  "Dove Tail Width": {
+    "name": "Dove Tail Width",
+    "options": [
+      "80.0",
+      "5.0"
+    ],
+    "value": 50000
+  },
+  "Camera Height": {
+    "name": "Camera Height",
+    "options": [
+      "358.10",
+      "-41.90"
+    ],
+    "value": 158100
+  },
+  "Dove Tail Height": {
+    "name": "Dove Tail Height",
+    "options": [
+      "80.0",
+      "5.0"
+    ],
+    "value": 20000
+  },
+  "ballBearing Default": {
+    "name": "ballBearing Default",
+    "options": [
+      "603zz",
+      "604zz",
+      "605zz",
+      "606zz",
+      "607zz",
+      "608zz",
+      "623zz",
+      "624zz",
+      "625zz",
+      "626zz",
+      "627zz",
+      "634zz",
+      "635zz",
+      "673zz",
+      "683zz",
+      "684zz",
+      "685zz",
+      "686zz",
+      "687zz",
+      "688zz",
+      "689zz",
+      "6920_2RS",
+      "693zz",
+      "694zz",
+      "695zz",
+      "696zz",
+      "697zz",
+      "698zz",
+      "699zz",
+      "R8-2RS",
+      "R8-60355K505",
+      "Thrust_1andAHalfinch"
+    ],
+    "strValue": "Thrust_1andAHalfinch"
+  },
+  "Z dimention": {
+    "name": "Z dimention",
+    "options": [
+      "140.0",
+      "3.0"
+    ],
+    "value": 2000
+  },
+  "Magnet Depth": {
+    "name": "Magnet Depth",
+    "options": [
+      "5.0",
+      "0.0"
+    ],
+    "value": 2500
+  },
+  "Connector Tolerance": {
+    "name": "Connector Tolerance",
+    "options": [
+      "2.0",
+      "0.0"
+    ],
+    "value": 200
+  },
+  "Length": {
+    "name": "Length",
+    "options": [
+      "240.0",
+      "40.0"
+    ],
+    "value": 120000
+  },
+  "capScrew Default": {
+    "name": "capScrew Default",
+    "options": [
+      "6#32",
+      "8#32",
+      "Inch-1_4-20",
+      "M1.6",
+      "M10",
+      "M12",
+      "M14",
+      "M16",
+      "M18",
+      "M2",
+      "M2.5",
+      "M20",
+      "M22",
+      "M24",
+      "M27",
+      "M3",
+      "M30",
+      "M36",
+      "M4",
+      "M42",
+      "M5",
+      "M5x100",
+      "M5x12",
+      "M5x25",
+      "M5x45",
+      "M5x75",
+      "M6",
+      "M8"
+    ],
+    "strValue": "M5x25"
+  },
+  "Cutout Width": {
+    "name": "Cutout Width",
+    "options": [
+      "120.0",
+      "5.0"
+    ],
+    "value": 18000
+  },
+  "X dimention": {
+    "name": "X dimention",
+    "options": [
+      "120.0",
+      "1.0"
+    ],
+    "value": 120000
+  },
+  "Bolt Length": {
+    "name": "Bolt Length",
+    "options": [
+      "180",
+      "10"
+    ],
+    "value": 25000
+  },
+  "heatedThreadedInsert Default": {
+    "name": "heatedThreadedInsert Default",
+    "options": [
+      "8#32",
+      "M3-pressIn",
+      "M5",
+      "M5-pressIn",
+      "M8"
+    ],
+    "strValue": "M5"
+  }
+}
