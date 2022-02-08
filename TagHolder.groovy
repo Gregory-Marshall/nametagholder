@@ -66,14 +66,18 @@ CSG makeDoveTail(double o = 0) {
 	def w = doveTailWidth.getMM()/2
 	return Extrude.points(new Vector3d(0, 0, zkey.getMM()),
                 new Vector3d(-w/6+o,0),
-                new Vector3d(-w/2+o,h-o),
-                new Vector3d(w/2-o,h-o),
+                new Vector3d(-w/2+2*o,h-o),
+                new Vector3d(w/2-2*o,h-o),
                 new Vector3d(w/6-o,0)
         ).movez(-(zkey.getMM()/2));
 }
 	
 CSG makeMagnet(){
-	return new Cylinder(magnetDiameter.getMM()/2,magnetDepth.getMM()).toCSG()
+	def rad = magnetDiameter.getMM()/2
+	def depth = magnetDepth.getMM()
+	def cylinder = new Cylinder(rad,depth).toCSG()
+	def seamNotches = new Cube(rad*1.6,rad*1.6,depth).toCSG()//should add corners to magnet holes where the slicer will hopefully hide the seam that was causing the parts to be out of tolerance
+	return cylinder.union(seamNotches.movez(depth/2))
 }
 
 CSG holder = makeHolder().setColor(javafx.scene.paint.Color.BLUE).movey(-doveTailScale.getMM()/2).setName("Blank Holder");

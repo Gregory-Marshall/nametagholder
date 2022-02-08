@@ -85,7 +85,7 @@
       "20.0",
       "0.0"
     ],
-    "value": 6150
+    "value": 6250
   },
   "LewanSoulMotor Default": {
     "name": "LewanSoulMotor Default",
@@ -207,7 +207,7 @@
       "5.0",
       "0.0"
     ],
-    "value": 2500
+    "value": 2250
   },
   "Connector Tolerance": {
     "name": "Connector Tolerance",
@@ -215,7 +215,7 @@
       "2.0",
       "0.0"
     ],
-    "value": 200
+    "value": 400
   },
   "Length": {
     "name": "Length",
